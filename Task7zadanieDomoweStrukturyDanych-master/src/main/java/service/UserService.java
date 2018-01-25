@@ -48,7 +48,7 @@ public class UserService  {
         return userWithLongestUsername;
     }
 
-    // zamieniałam tutaj zmiena se Stringa na Listę Stringów??? skoro moge posiadac więcej niż jednego dorosłego
+    // zamieniałem tutaj zmiena ze Stringa na Listę Stringów??? skoro moge posiadac więcej niż jednego dorosłego
     public static List<String> getNamesAndSurnamesCommaSeparatedOfAllUsersAbove18(List<User> users) {
 
         List<String> nameAndSurnameUsersAbove18 = new ArrayList<>();
@@ -61,7 +61,7 @@ public class UserService  {
         return nameAndSurnameUsersAbove18;
     }
 
-    // zmieniłam z Listy na TreeSeta??? Nie udało mi się tego jakoś posortować przez Colections.sort()???
+    // Zmieniłem z Listy na TreeSet. Nie udało mi się tego jakoś posortować przez Colections.sort().
     public static TreeSet<Permission> getSortedPermissionsOfUsersWithNameStartingWithA(List<User> users) {
 
         List<Permission> permissinsOfUsersWhithNameStartingWithA = new ArrayList<>();
