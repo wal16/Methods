@@ -1,11 +1,10 @@
 package service;
 
 import domain.Permission;
-import domain.User;
 import domain.Person;
 import domain.Role;
+import domain.User;
 
-import javax.swing.*;
 import java.util.*;
 
 public class UserService  {
@@ -85,14 +84,43 @@ public class UserService  {
     }
 
     public static Map<Role, List<User>> groupUsersByRole(List<User> users) {
-
-        return null;
+        List<User> UserList = new ArrayList<>();
+        Map<Role, List<User>> endingMaps = new HashMap<>();
+        Role roles;
+        for (User user : users) {
+            roles = user.getPersonDetails().getRole();
+            if (users.get(0) == user) {
+                UserList.add(user);
+                endingMaps.put(user.getPersonDetails().getRole(), UserList);
+            } else {
+                for (Role role:endingMaps.keySet()){
+                    if (role.getName().equals(roles.getName())) {
+                        endingMaps.get(role).add(user);
+                        break;
+                    }
+                    else {
+                        List<User> e = new ArrayList<>();
+                        e.add(user);
+                        endingMaps.put(user.getPersonDetails().getRole(), e);
+                    }
+                }
+            }
+        }
+        return endingMaps;
     }
-
     public static Map<Boolean, List<User>> partitionUserByUnderAndOver18(List<User> users) {
-
-        return null;
-    }
-
-
-}
+        List<User> aa = new ArrayList<>();
+        List<User> bb = new ArrayList<>();
+        Map<Boolean,List<User>> aaa = new HashMap<>();
+        for (User user:users){
+            if(user.getPersonDetails().getAge() > 18){
+                aa.add(user);
+            }
+            else {
+                bb.add(user);
+            }
+        }
+        aaa.put(true, aa);
+        aaa.put(false, bb);
+        return aaa;
+    }}
